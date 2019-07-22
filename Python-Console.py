@@ -4,13 +4,13 @@ import sys
 _dir = os.path.dirname(__file__)
 sys.path.append(_dir)
 
-os.environ["QT_PREFERRED_BINDING"] = "PySide"  # Unix/OSX
+os.environ["QT_PREFERRED_BINDING"] = "PySide"
 try:
     from Qt import QtCore, QtWidgets, QtGui
 except:
     import traceback
     trackback.print_exc()
-   
+
 from QtPythonConsole.console import ConsoleDialog
 
 
@@ -33,9 +33,9 @@ def decorate_application():
     dark_palette.setColor(QtGui.QPalette.LinkVisited, fg_color)
 
     dark_palette.setBrush(QtGui.QPalette.HighlightedText, QtGui.QBrush(QtGui.QColor("#FFFFFF")))
-            
+
     # and associate it with the qapplication
-    QtGui.QApplication.setPalette(dark_palette) 
+    QtGui.QApplication.setPalette(dark_palette)
 
 
 def _build_connection():
@@ -84,4 +84,3 @@ def main():
     # If we created the app, we need to start it
     if start:
         app.exec_()
-
