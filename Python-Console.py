@@ -4,9 +4,9 @@ import sys
 _dir = os.path.dirname(__file__)
 sys.path.append(_dir)
 
-os.environ["QT_PREFERRED_BINDING"] = "PySide"
+os.environ["QT_PREFERRED_BINDING"] = "PySide"  # Unix/OSX
 try:
-    from Qt import QtCore, QtWidgets, QtGui
+    from Qt import QtCore, QtGui, QtWidgets
 except:
     import traceback
     trackback.print_exc()
@@ -33,9 +33,9 @@ def decorate_application():
     dark_palette.setColor(QtGui.QPalette.LinkVisited, fg_color)
 
     dark_palette.setBrush(QtGui.QPalette.HighlightedText, QtGui.QBrush(QtGui.QColor("#FFFFFF")))
-
+            
     # and associate it with the qapplication
-    QtGui.QApplication.setPalette(dark_palette)
+    QtWidgets.QApplication.setPalette(dark_palette) 
 
 
 def _build_connection():
