@@ -60,7 +60,7 @@ def main():
     connection = _build_connection()
 
     # Add a nice helper comment at the top of the file.
-    _comment_line = "# " + ("=" * 50) + "\n"
+    _comment_line = "# " + ("=" * 60) + "\n"
     additional_text = _comment_line
     if not connection:
         additional_text += "# Could not initiate an automatic hlev SyPy connection\n"
