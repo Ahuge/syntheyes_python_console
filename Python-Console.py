@@ -68,7 +68,8 @@ def main():
         additional_text += "# A SyPy hlev connection object is initialized as \"connection\"\n"
     additional_text += _comment_line
 
-    dialog = ConsoleDialog(_locals=globals())
+    dialog = ConsoleDialog(_locals={"connection": connection})
+    dialog.resize(1200, 600)
     dialog.show()
 
     # Replace the helper text if existing
@@ -84,3 +85,6 @@ def main():
     # If we created the app, we need to start it
     if start:
         app.exec_()
+
+if __name__ == "__main__":
+    main()
