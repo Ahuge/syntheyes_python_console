@@ -14,30 +14,6 @@ except:
 from QtPythonConsole.console import ConsoleDialog
 
 
-def decorate_application():
-    palette_path = os.path.join(_dir, "QtPythonConsole", "dark_palette.qpalette")
-    fh = QtCore.QFile(palette_path)
-    fh.open(QtCore.QIODevice.ReadOnly)
-    file_in = QtCore.QDataStream(fh)
-    dark_palette = QtGui.QPalette()
-    file_in.__rshift__(dark_palette)
-    fh.close()
-
-    # set the std selection bg color to be 'shotgun blue'
-    highlight_color = QtGui.QBrush(QtGui.QColor("#18A7E3"))
-    dark_palette.setBrush(QtGui.QPalette.Highlight, highlight_color)
-
-    # update link colors
-    fg_color = dark_palette.color(QtGui.QPalette.Text)
-    dark_palette.setColor(QtGui.QPalette.Link, fg_color)
-    dark_palette.setColor(QtGui.QPalette.LinkVisited, fg_color)
-
-    dark_palette.setBrush(QtGui.QPalette.HighlightedText, QtGui.QBrush(QtGui.QColor("#FFFFFF")))
-            
-    # and associate it with the qapplication
-    QtWidgets.QApplication.setPalette(dark_palette) 
-
-
 def _build_connection():
     import SyPy
     connection = SyPy.SyLevel()
@@ -53,8 +29,6 @@ def main():
     if not app:
         start = True
         app = QtWidgets.QApplication([])
-
-    decorate_application()
 
     # Build existing connection object
     connection = _build_connection()
@@ -85,6 +59,7 @@ def main():
     # If we created the app, we need to start it
     if start:
         app.exec_()
+
 
 if __name__ == "__main__":
     main()
