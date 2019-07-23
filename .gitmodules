@@ -1,0 +1,3 @@
+[submodule "QtPythonConsole"]
+	path = QtPythonConsole
+	url = git@github.com:Ahuge/QtPythonConsole
